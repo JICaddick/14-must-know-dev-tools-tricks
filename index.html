@@ -10,7 +10,7 @@
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
-
+//find element in DOM tree, right click > breakon > attribute modifications. Then when you click on the relevant part of the page the debugger will pause it and show you what's causing it's behaviour. 
     function makeGreen() {
       const p = document.querySelector('p');
       p.style.color = '#BADA55';
@@ -18,29 +18,56 @@
     }
 
     // Regular
-
-    // Interpolated
-
+console.log('hello');
+    // Interpolated - Whatever we pass as the second argument will be inserted into the first string. --> Largely redundant since ES6 has `${}`.
+console.log('Greetings %s', 'Earthlings');
     // Styled
-
+console.log('%c baller text', 'font-size: 50px; background:green; text-shadow: 10px 10px 0 orange');
     // warning!
-
+console.warn('Bother!');
     // Error :|
-
-    // Info
-
-    // Testing
-
-    // clearing
-
+console.error('This is a public service announcement, this is only a test');
+    // Info this one doesn't give the 'i' tag like it's supposed to.
+console.info('The first computer virus was created in 1983');
+    // Testing console.assert will only show if the first argument is false.
+const p = document.querySelector('p');
+console.assert(p.classList.contains('ouch'), 'That is wrong!');
+console.assert(1 === 3, 'Er,nah');
+    // clearing - A way to annoy people who are trying to debug your code.
+// console.clear();
     // Viewing DOM Elements
-
+console.log(p);
+console.dir(p);
     // Grouping together
 
+    console.clear();
+ dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
     // counting
-
+console.count('Jimmy');
+console.count('Jimmy');
+console.count('Jimmy');
+console.count('Jimmy');
+console.count('Potato');
+console.count('Potato');
+console.count('Potato');
+console.count('Jimmy');
+console.count('Jimmy');
     // timing
+console.time('fetching data');
+fetch('https://api.github.com/users/JICaddick')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    });
 
+    console.table(dogs)
   </script>
 </body>
 </html>
